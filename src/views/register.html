@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Topi Registration Page</title>
+    </head>
+    <body>
+            <h1>Topi Sign up!</h1>
+            <form id='reg-form' action='user/create-user' method="POST">
+                <div>
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div>
+                    <button type="submit">submit</Button>
+                </div>
+            
+            </form>
+
+            <script>
+                const form = document.getElementById("reg-form");
+                form.addEventListener("submit", registerUser);
+
+                const registerUser = await fetch('http://localhost:5000/user/create-user', {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(form)
+                });
+
+            </script>
+     
+    </body>   
+</html>
+
+<p>Want to learn more about Topi?</p>
+<li><a href="/about">About Topi</a></li>
+<p>Alreay have an account?</p>
+<li><a href="/login">Login</a></li>
+<p>Back to home page?</p>
+<li><a href="/">Go Back</a></li>
+
+

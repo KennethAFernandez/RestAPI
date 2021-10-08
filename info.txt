@@ -1,0 +1,9 @@
+// sudo npm i -g typescript
+// COMPILE: [tsc file.ts]
+// typescript config file: tsc --init
+// npm init -y
+// npm i express
+// npm i -D typescript ts-node nodemon
+// update package.json ("start", "dev", "build")
+// npm run build compiles to .js file
+// npm i express bcrypt
