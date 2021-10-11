@@ -23,7 +23,7 @@ const login = (req: Request, res: Response, next: NextFunction) => {
         }
     })
     .catch((error) => {
-        return res.status(500).json({
+        return res.status(403).json({
             message: error.message,
             error
         });
