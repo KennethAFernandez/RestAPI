@@ -30,12 +30,6 @@ const login = (req: Request, res: Response, next: NextFunction) => {
     });
 }
 
-const authorize = (req: Request, res: Response, next: NextFunction) => {
-    log.info(namespace, 'Authorized user');
-    return res.status(200).json({
-        message: "User -> Authorized"
-    });
-};
 
 const getInfo = (req: Request, res: Response, next: NextFunction) => {
     log.info(namespace, 'REQUESTING-INFO');
@@ -120,6 +114,5 @@ getInfo,
 createUser,
 deleteUser,
 login,
-authorize,
 updateUser
 };

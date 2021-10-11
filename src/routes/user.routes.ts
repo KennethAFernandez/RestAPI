@@ -10,7 +10,6 @@ import log from '../config/log';
 const router = express.Router();
 
 router.get('/get-info', controller.getInfo);
-router.get('/authorize', controller.authorize);
 
 router.post('/create-user', controller.createUser);
 router.post('/login', controller.login);

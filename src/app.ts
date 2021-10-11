@@ -26,7 +26,11 @@ mongoose.connect(config.mongo.url, config.mongo.options).then(result => {
     });
 
 
-/** Logging */
+/**
+ * Logging - outputs namespace, method, and url and on res finish
+ * outputs status code as well 
+*/
+
 app.use((req, res, next) => {
     log.info(namespace, `[METHOD - ${req.method}], [URL] [${req.url}]`);
     res.on('finish', () => {
@@ -35,10 +39,16 @@ app.use((req, res, next) => {
     next();
 });
 
+/**
+ * urlencoded: middleware for parsing bodies from URL
+ * json: middleware for parsing JSON objects
+ */
+
 app.use(express.urlencoded({ extended:false }));
 app.use(express.json());
 
 /** API - Allow resrouce sharing */
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'x');
     res.header('Access-Control-Allow-Headers', 'Origin X-Requested-With, Content-Type, Accept, Authorization');
@@ -49,7 +59,10 @@ app.use((req, res, next) => {
     next();
 });
 
-
+/**
+ * Routes to home page, login page, registration page & cal. page
+ * throw away routes to html pages -> Testing
+ */
 
 app.use('/user', Routes);
 
@@ -69,8 +82,11 @@ app.get('/calendar', (req, res) => {
     res.sendFile('./views/cal.html', { root: __dirname })
 })
 
+/** API uses errorHandler.ts */
+
 app.use(ErrorHandler.errorHandler);
 
+/** Create Server */
 
 const httpServer = http.createServer(app);
 httpServer.listen(config.server.port, () => log.info(namespace, `Running => ${config.server.hostname}:${config.server.port}`));
