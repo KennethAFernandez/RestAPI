@@ -14,8 +14,9 @@ const login = (req: Request, res: Response, next: NextFunction) => {
         if (users[0].password === password) {
             log.info(namespace, '[LOGIN SUCCESS]');
             log.info(namespace, `[EMAIL: ${users[0].email}] [PASSWORD: ${users[0].password}]`);
+            
             return res.status(200).json({
-                users: users
+                users: users[0].firstName
             })
         } else {
             log.info(namespace, '[LOGIN FAIL]');
@@ -72,6 +73,7 @@ const createUser =  async (req: Request, res: Response, next: NextFunction) => {
         return res.status(201).json({
             user: result,
         });
+    
     })
     .catch ((error) => {
         return res.status(500).json({
@@ -79,6 +81,7 @@ const createUser =  async (req: Request, res: Response, next: NextFunction) => {
             error
         });
     });
+    
     
 };
 

@@ -34,7 +34,6 @@
             <script>
                 const form = document.getElementById("reg-form");
                 form.addEventListener("submit", registerUser);
-
                 const registerUser = await fetch('http://localhost:5000/user/create-user', {
                     method: 'post',
                     headers: {
@@ -43,7 +42,6 @@
                     credentials: 'include',
                     body: JSON.stringify(form)
                 });
-
             </script>
      
     </body>   
