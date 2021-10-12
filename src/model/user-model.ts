@@ -5,6 +5,7 @@ import log from '../config/log'
 /** Defines values to be used in JSON blob being
  * sent to mongo. Need to update values with required = true/false
  * and unique = true/false
+ * Import models?
  */
 const UserSchema: Schema = new Schema (
     {

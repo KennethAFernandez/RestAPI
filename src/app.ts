@@ -24,7 +24,8 @@ mongoose.connect(config.mongo.url, config.mongo.options).then(result => {
         log.error(namespace, error.message, error);
         process.exit();
     });
-
+// const conn1 = mongoose.createConnection(config.mongo.url, config.mongo.options)
+// const conn2 = mongoose.createConnection(config.mongo.url, config.mongo.options)
 
 /**
  * Logging - outputs namespace, method, and url and on res finish
