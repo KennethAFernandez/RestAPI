@@ -3,7 +3,7 @@ import express, { Router, Request, Response, request } from 'express';
 import log from './config/log';
 import config from './config/config';
 import mongoose, { mongo } from 'mongoose';
-import Routes from './routes/user.routes';
+import Routes from './routes/user-routes';
 import ErrorHandler from './errorHandler';
 
 

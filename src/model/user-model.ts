@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import userInterface from '../interface/userInfo';
+import userInterface from '../interface/user-interface';
 import log from '../config/log'
 
 /** Defines values to be used in JSON blob being

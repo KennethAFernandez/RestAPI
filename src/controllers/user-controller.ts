@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction} from 'express';
 import log from '../config/log';
-import UserSchema from '../model/userSchema';
+import UserSchema from '../model/user-model';
 import mongoose from 'mongoose';
 
-const namespace = 'CONTROLLER'
+const namespace = 'USER-CONTROLLER'
 
 const login = (req: Request, res: Response, next: NextFunction) => {
     let { email, password } = req.body;
