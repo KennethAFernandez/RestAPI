@@ -26,7 +26,7 @@ const MONGO_OPTIONS = {
 
 /** 
  * Define mongo username, password and host from env. variables,
- * and set default values.(NEED TO BE UPDATED)
+ * and set default values.(Need to update defualt values)
  */
 
 const MONGO_USER = process.env.MONGO_USER || 'ynnek';

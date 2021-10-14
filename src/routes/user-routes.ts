@@ -3,13 +3,16 @@ import controller from '../controllers/user-controller';
 import log from '../config/log';
 
 /** 
- * Creates routes to be used from app.ts, and their
+ * Creates routes to be used from app.ts, and call their
  * corresponding functions
  */
 
 const router = express.Router();
 
-/** Routes for testing, will keep some, will delete others */
+/** 
+ * Routes for testing with throw away login page need to update
+ * after embedded into Topi project
+ */
 
 router.get('/get-info', controller.getInfo);
 router.post('/create-user', controller.createUser);

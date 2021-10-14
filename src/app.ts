@@ -1,8 +1,8 @@
 import http from 'http';
-import express, { Router, Request, Response, request } from 'express';
+import express from 'express';
 import log from './config/log';
 import config from './config/config';
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 import Routes from './routes/user-routes';
 import ErrorHandler from './errorHandler';
 
@@ -15,6 +15,7 @@ const namespace = 'SERVER';
 /** 
  * Using mongoose to connect to mongodb with values defined in the
  * config file & logging/ error handling
+ * Need to update when coordinating databases for the schedule info.
  */
 
 mongoose.connect(config.mongo.url, config.mongo.options).then(result => {
@@ -33,7 +34,7 @@ mongoose.connect(config.mongo.url, config.mongo.options).then(result => {
 app.use((req, res, next) => {
     log.info(namespace, `[METHOD - ${req.method}], [URL] [${req.url}]`);
     res.on('finish', () => {
-        log.info(namespace, `[METHOD - ${req.method}], [URL] [${req.url}], [STATUS - ${res.statusCode}]`);
+        log.info(namespace, `[STATUS - ${res.statusCode}]`);
     });
     next();
 });
@@ -46,7 +47,9 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-/** API - Allow resrouce sharing */
+/** 
+ * API - Allow resrouce sharing 
+ */
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'x');
@@ -69,7 +72,10 @@ app.use('/user', Routes);
 
 app.use(ErrorHandler.errorHandler);
 
-/** Create Server */
+/** 
+ * Create Server using http import 
+ * import hostname & port from the config file
+ */
 
 const httpServer = http.createServer(app);
 httpServer.listen(config.server.port, () => log.info(namespace, `Running => ${config.server.hostname}:${config.server.port}`));
