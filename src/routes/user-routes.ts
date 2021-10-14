@@ -9,6 +9,8 @@ import log from '../config/log';
 
 const router = express.Router();
 
+/** Routes for testing, will keep some, will delete others */
+
 router.get('/get-info', controller.getInfo);
 router.post('/create-user', controller.createUser);
 router.post('/login', controller.login);

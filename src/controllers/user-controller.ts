@@ -18,7 +18,6 @@ const login = (req: Request, res: Response, next: NextFunction) => {
         } else {
             log.info(namespace, '[LOGIN FAIL]');
             res.send('Login failed')
-            // res.sendFile('login.html', { root:'./src/views' })
         }
     })
     .catch((error) => {
@@ -59,16 +58,11 @@ const createUser =  async (req: Request, res: Response, next: NextFunction) => {
     });
     return user.save()
     .then(result => {
-        return res.status(201).json({
-            user: result,
-        });
+        return res.status(201).json({ user: result });
     
     })
     .catch ((error) => {
-        return res.status(500).json({
-            message: error.message,
-            error
-        });
+        return res.status(500).json({ message: error.message, error });
     });
     
     
@@ -78,16 +72,11 @@ const deleteUser = (req: Request, res: Response) => {
     UserSchema.deleteOne({ _id: req.params.id })
         .exec()
         .then((users) => {
-            return res.status(200).json({
-                users: users
-            });
+            return res.status(200).json({ users: users });
                 
         })
         .catch((error) => {
-            return res.status(500).json({
-                message: error.message,
-                error
-            });
+            return res.status(500).json({ message: error.message, error });
         });        
 };
 

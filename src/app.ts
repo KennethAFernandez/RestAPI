@@ -24,8 +24,6 @@ mongoose.connect(config.mongo.url, config.mongo.options).then(result => {
         log.error(namespace, error.message, error);
         process.exit();
     });
-// const conn1 = mongoose.createConnection(config.mongo.url, config.mongo.options)
-// const conn2 = mongoose.createConnection(config.mongo.url, config.mongo.options)
 
 /**
  * Logging - outputs namespace, method, and url and on res finish
@@ -45,7 +43,7 @@ app.use((req, res, next) => {
  * json: middleware for parsing JSON objects
  */
 
-app.use(express.urlencoded({ extended:false }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 /** API - Allow resrouce sharing */
@@ -66,22 +64,6 @@ app.use((req, res, next) => {
  */
 
 app.use('/user', Routes);
-
-app.get('/', (req, res) => {
-    res.sendFile('./views/index.html', { root: __dirname });
-});
-
-app.get('/login-page', (req, res) => {
-    res.sendFile('./views/login.html', { root: __dirname});
-});
-
-app.get('/register-page', (req, res) => {
-    res.sendFile('./views/register.html', { root: __dirname });
-});
-
-app.get('/calendar', (req, res) => {
-    res.sendFile('./views/cal.html', { root: __dirname })
-})
 
 /** API uses errorHandler.ts */
 
