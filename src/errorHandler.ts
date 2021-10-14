@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction} from 'express';
 
+/** Simple error handler */
+
 const errorHandler = (error: Error, req: Request, res: Response, next: NextFunction) => {
     if (typeof(error) === 'string') {
         return res.status(400).json({ message: error});

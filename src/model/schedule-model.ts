@@ -2,6 +2,11 @@ import mongoose, { Schema } from 'mongoose';
 import schedule from '../interface/schedule-interface';
 import log from '../config/log'
 
+/**
+ * Schema for schedule information, needs to be thoroughly 
+ * fleshed out.
+ */
+
 const ScheduleSchema: Schema = new Schema (
     {
         day: {
